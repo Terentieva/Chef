@@ -16,7 +16,7 @@ public class Runner {
     {
         ActionsWithIngridients actionsWithIngridients = new ActionsWithIngridients();
         ArrayList<Salad> listOfSalads = actionsWithIngridients.getSalads();
-        boolean toBeContinue = true;
+        boolean toBeContinue = actionsWithIngridients.getFileExist();
         while (toBeContinue) {
             System.out.println("Select menu item");
             System.out.println("1 - Print; 2 - Sort; 3 - Search; 4 - Comparative Analysis; 0 - Exit");

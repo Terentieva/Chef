@@ -109,6 +109,9 @@ public class Ingredient implements Comparable<Ingredient> {
         this.calories = calories;
     }
 
+    public Ingredient()
+    {}
+
     public int compareTo(Ingredient o) {
         return Comparators.NAME.compare(this, o);
     }

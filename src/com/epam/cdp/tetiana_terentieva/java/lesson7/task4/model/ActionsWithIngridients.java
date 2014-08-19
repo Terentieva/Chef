@@ -9,24 +9,26 @@ import com.epam.cdp.tetiana_terentieva.java.lesson7.task4.model.Ingredient;
  */
 public class ActionsWithIngridients {
 
+    public boolean fileExist;
+
     protected final ArrayList<Ingredient> listOfIngredients = new ArrayList<Ingredient>();
+
+    public boolean getFileExist()
+    {
+        return fileExist;
+    }
+
+    protected void setFileExist(boolean fileExist)
+    {
+        this.fileExist = fileExist;
+    }
 
     private void fillListOfIngredients()
     {
-        listOfIngredients.add(new Ingredient("Champignon", "Vegetable", 27, 4, 1, 1));
-        listOfIngredients.add(new Ingredient("Onion", "Vegetable", 41, 2, 0,  9));
-        listOfIngredients.add(new Ingredient("Carrots", "Vegetable", 34, 1, 0, 7));
-        listOfIngredients.add(new Ingredient("Cucumbers", "Vegetable", 11, 1, 0, 2));
-        listOfIngredients.add(new Ingredient("Corn", "Vegetable", 80, 10, 1, 2));
-        listOfIngredients.add(new Ingredient("Orange", "Fruit", 40, 1, 0, 8));
-        listOfIngredients.add(new Ingredient("Kiwi", "Fruit", 50, 1, 1, 7));
-        listOfIngredients.add(new Ingredient("Cherry", "Fruit", 52, 1, 0, 10));
-        listOfIngredients.add(new Ingredient("Strawberry", "Fruit", 34, 1, 0, 6));
-        listOfIngredients.add(new Ingredient("Banana", "Fruit", 89, 2, 0, 19));
-        listOfIngredients.add(new Ingredient("Pork", "Meat", 491, 12, 33, 0));
-        listOfIngredients.add(new Ingredient("Chicken", "Diet Meat", 241, 21, 8, 1));
-        listOfIngredients.add(new Ingredient("Mayonneise", "Sauce", 555, 2, 58, 4));
-        listOfIngredients.add(new Ingredient("Yogurt", "Milk", 555, 12, 2, 4));
+        WorkWithFiles workWithFiles = new WorkWithFiles();
+        workWithFiles.setFileName("./resources/ListOfIngredients.xml");
+        listOfIngredients.addAll(workWithFiles.readFromXMLFile());
+        setFileExist(workWithFiles.fileExist);
     }
 
     private ArrayList<Ingredient> findIngredientsByParam(int paramNumber, Object paramValue)
@@ -132,6 +134,7 @@ public class ActionsWithIngridients {
     {
       fillListOfIngredients();
     }
+
 
     private Salad createSalad(String saladName, boolean itsDessert)
     {

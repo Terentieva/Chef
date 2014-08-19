@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<listOfIngredients>
+    <ingredient name = "Champignon">
+        <type>Vegetable</type>
+        <calories>27</calories>
+        <proteins>4</proteins>
+        <fats>1</fats>
+        <carbs>1</carbs>
+    </ingredient>
+    <ingredient name = "Onion">
+        <type>Vegetable</type>
+        <calories>41</calories>
+        <proteins>2</proteins>
+        <fats>0</fats>
+        <carbs>9</carbs>
+    </ingredient>
+    <ingredient name = "Carrots">
+        <type>Vegetable</type>
+        <calories>34</calories>
+        <proteins>1</proteins>
+        <fats>0</fats>
+        <carbs>7</carbs>
+    </ingredient>
+    <ingredient name = "Cucumbers">
+        <type>Vegetable</type>
+        <calories>11</calories>
+        <proteins>1</proteins>
+        <fats>0</fats>
+        <carbs>2</carbs>
+    </ingredient>
+    <ingredient name = "Corn">
+        <type>Vegetable</type>
+        <calories>80</calories>
+        <proteins>10</proteins>
+        <fats>1</fats>
+        <carbs>2</carbs>
+    </ingredient>
+    <ingredient name = "Orange">
+        <type>Fruit</type>
+        <calories>40</calories>
+        <proteins>1</proteins>
+        <fats>0</fats>
+        <carbs>8</carbs>
+    </ingredient>
+    <ingredient name = "Kiwi">
+        <type>Fruit</type>
+        <calories>50</calories>
+        <proteins>1</proteins>
+        <fats>1</fats>
+        <carbs>7</carbs>
+    </ingredient>
+    <ingredient name = "Cherry">
+        <type>Fruit</type>
+        <calories>52</calories>
+        <proteins>1</proteins>
+        <fats>0</fats>
+        <carbs>10</carbs>
+    </ingredient>
+    <ingredient name = "Strawberry">
+        <type>Fruit</type>
+        <calories>34</calories>
+        <proteins>1</proteins>
+        <fats>0</fats>
+        <carbs>6</carbs>
+    </ingredient>
+    <ingredient name = "Banana">
+        <type>Fruit</type>
+        <calories>89</calories>
+        <proteins>2</proteins>
+        <fats>0</fats>
+        <carbs>19</carbs>
+    </ingredient>
+    <ingredient name = "Pork">
+        <type>Meat</type>
+        <calories>491</calories>
+        <proteins>13</proteins>
+        <fats>23</fats>
+        <carbs>0</carbs>
+    </ingredient>
+    <ingredient name = "Chicken">
+        <type>Diet Meat</type>
+        <calories>241</calories>
+        <proteins>21</proteins>
+        <fats>8</fats>
+        <carbs>1</carbs>
+    </ingredient>
+    <ingredient name = "Mayonneise">
+        <type>Sauce</type>
+        <calories>555</calories>
+        <proteins>2</proteins>
+        <fats>58</fats>
+        <carbs>4</carbs>
+    </ingredient>
+    <ingredient name = "Yogurt">
+        <type>Milk</type>
+        <calories>555</calories>
+        <proteins>12</proteins>
+        <fats>2</fats>
+        <carbs>4</carbs>
+    </ingredient>
+</listOfIngredients>
