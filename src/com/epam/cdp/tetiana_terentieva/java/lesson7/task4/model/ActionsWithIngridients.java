@@ -1,37 +1,22 @@
 package com.epam.cdp.tetiana_terentieva.java.lesson7.task4.model;
 
 import java.util.*;
-import com.epam.cdp.tetiana_terentieva.java.lesson7.task4.model.Salad;
-import com.epam.cdp.tetiana_terentieva.java.lesson7.task4.model.Ingredient;
 
 /**
  * Created by Таня on 29.07.2014.
  */
 public class ActionsWithIngridients {
 
-    public boolean fileExist;
-
-    protected final ArrayList<Ingredient> listOfIngredients = new ArrayList<Ingredient>();
-
-    public boolean getFileExist()
+    public static ArrayList fillListOfIngredients()
     {
-        return fileExist;
+        ArrayList<Ingredient> listOfIngredients = new ArrayList<Ingredient>();
+        WorkWithXmlFiles workWithXmlFiles = new WorkWithXmlFiles();
+        workWithXmlFiles.setFileName("./resources/ListOfIngredients.xml");
+        listOfIngredients.addAll(workWithXmlFiles.readFromFile());
+        return listOfIngredients;
     }
 
-    protected void setFileExist(boolean fileExist)
-    {
-        this.fileExist = fileExist;
-    }
-
-    private void fillListOfIngredients()
-    {
-        WorkWithFiles workWithFiles = new WorkWithFiles();
-        workWithFiles.setFileName("./resources/ListOfIngredients.xml");
-        listOfIngredients.addAll(workWithFiles.readFromXMLFile());
-        setFileExist(workWithFiles.fileExist);
-    }
-
-    private ArrayList<Ingredient> findIngredientsByParam(int paramNumber, Object paramValue)
+    private static ArrayList<Ingredient> findIngredientsByParam(ArrayList listOfIngredients, int paramNumber, Object paramValue)
     {
         Iterator<Ingredient> fvIt = listOfIngredients.iterator();
         ArrayList<Ingredient> newList = new ArrayList<Ingredient>();
@@ -76,7 +61,7 @@ public class ActionsWithIngridients {
         return newList;
     }
 
-    public Ingredient findIngredientByParam(Salad salad, HashMap<String, String > setOfTextParams, HashMap<String, Integer > setOfNumbParams)
+    public static Ingredient findIngredientByParam(Salad salad, HashMap<String, String > setOfTextParams, HashMap<String, Integer > setOfNumbParams)
     {
         boolean addNew = false;
         for (Map.Entry<Ingredient, Integer> component: salad.foodIngredients)
@@ -130,13 +115,13 @@ public class ActionsWithIngridients {
         return null;
     }
 
-    public ActionsWithIngridients()
+    /*public ActionsWithIngridients()
     {
       fillListOfIngredients();
-    }
+    }*/
 
 
-    private Salad createSalad(String saladName, boolean itsDessert)
+    private static Salad createSalad(ArrayList listOfIngredients, String saladName, boolean itsDessert)
     {
         Salad newSalad = new Salad(saladName);
         ArrayList<Map.Entry<Ingredient, Integer>> ingredients = new ArrayList<Map.Entry<Ingredient, Integer>>();
@@ -144,32 +129,32 @@ public class ActionsWithIngridients {
         int newAmount;
         if (itsDessert)
         {
-            for(Ingredient saladIngredient: findIngredientsByParam(1, "Fruit"))
+            for(Ingredient saladIngredient: findIngredientsByParam(listOfIngredients, 1, "Fruit"))
             {
                 newAmount = amount.nextInt(50);
                 ingredients.add(new AbstractMap.SimpleEntry<Ingredient, Integer>(saladIngredient, (newAmount != 0)? newAmount: amount.nextInt(50)));
             }
 
-            for(Ingredient saladIngredient: findIngredientsByParam(1, "Milk"))
+            for(Ingredient saladIngredient: findIngredientsByParam(listOfIngredients, 1, "Milk"))
             {
                 newAmount = amount.nextInt(50);
                 ingredients.add(new AbstractMap.SimpleEntry<Ingredient, Integer>(saladIngredient, (newAmount != 0) ? newAmount : amount.nextInt(50)));
             }
         }
         else {
-            for(Ingredient saladIngredient: findIngredientsByParam(1, "Diet Meat"))
+            for(Ingredient saladIngredient: findIngredientsByParam(listOfIngredients, 1, "Diet Meat"))
             {
                 newAmount = amount.nextInt(50);
                 ingredients.add(new AbstractMap.SimpleEntry<Ingredient, Integer>(saladIngredient, (newAmount != 0) ? newAmount : amount.nextInt(50)));
             }
 
-            for(Ingredient saladIngredient: findIngredientsByParam(1, "Sauce"))
+            for(Ingredient saladIngredient: findIngredientsByParam(listOfIngredients, 1, "Sauce"))
             {
                 newAmount = amount.nextInt(50);
                 ingredients.add(new AbstractMap.SimpleEntry<Ingredient, Integer>(saladIngredient, (newAmount != 0) ? newAmount : amount.nextInt(50)));
             }
 
-            for(Ingredient saladIngredient: findIngredientsByParam(1, "Vegetable"))
+            for(Ingredient saladIngredient: findIngredientsByParam(listOfIngredients, 1, "Vegetable"))
             {
                 newAmount = amount.nextInt(50);
                 ingredients.add(new AbstractMap.SimpleEntry<Ingredient, Integer>(saladIngredient, (newAmount != 0) ? newAmount : amount.nextInt(50)));
@@ -180,15 +165,15 @@ public class ActionsWithIngridients {
         return newSalad;
     }
 
-    public ArrayList<Salad> getSalads()
+    public static ArrayList<Salad> getSalads(ArrayList listOfIngredients)
     {
         ArrayList<Salad> listOfSalads = new ArrayList<Salad>();
-        listOfSalads.add(createSalad("Caprice", false));
-        listOfSalads.add(createSalad("Fruits salad", true));
+        listOfSalads.add(createSalad(listOfIngredients, "Caprice", false));
+        listOfSalads.add(createSalad(listOfIngredients, "Fruits salad", true));
         return listOfSalads;
     }
 
-    public void printSalads(ArrayList<Salad> listOfSalads, boolean withAllFields)
+    public static void printSalads(ArrayList<Salad> listOfSalads, boolean withAllFields)
     {
         for(Salad salad : listOfSalads)
         {
@@ -197,7 +182,7 @@ public class ActionsWithIngridients {
         }
     }
 
-    public void sortSalads(ArrayList<Salad> listOfSalads, int paramNumber)
+    public static void sortSalads(ArrayList<Salad> listOfSalads, int paramNumber)
     {
         for (Salad salad : listOfSalads) {
             switch (paramNumber) {
@@ -231,7 +216,7 @@ public class ActionsWithIngridients {
         }
     }
 
-    public void ingredientSearch(ArrayList<Salad> listOfSalads)
+    public static void ingredientSearch(ArrayList<Salad> listOfSalads)
     {
         HashMap<String, String> textParams = new HashMap<String, String>();
         HashMap<String, Integer> numbParams = new HashMap<String, Integer>();
@@ -315,7 +300,7 @@ public class ActionsWithIngridients {
         }
     }
 
-    private void compareAdditionToDiffCollections()
+    private static void compareAdditionToDiffCollections()
     {
         System.out.println("Addition:");
         ArrayList<Integer> arrayList = new ArrayList<Integer>();
@@ -373,7 +358,7 @@ public class ActionsWithIngridients {
         System.out.println("   -  to <HashMap> collection takes " + (finish - start) + " milisec");
     }
 
-    private void compareSearchInDiffCollections()
+    private static void compareSearchInDiffCollections()
     {
         long start, finish;
         System.out.println("Search:");
@@ -439,7 +424,7 @@ public class ActionsWithIngridients {
         System.out.println("   -  to <HashMap> collection takes " + (finish - start) + " milisec");
     }
 
-    private void compareRemoveFromDiffCollections()
+    private static void compareRemoveFromDiffCollections()
     {
         long start, finish;
         System.out.println("Removing:");
@@ -505,7 +490,7 @@ public class ActionsWithIngridients {
     }
 
 
-    public void comparativeAnalysis()
+    public static void comparativeAnalysis()
     {
         compareAdditionToDiffCollections();
         compareSearchInDiffCollections();

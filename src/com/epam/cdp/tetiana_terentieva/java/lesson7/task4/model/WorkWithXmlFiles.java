@@ -15,19 +15,15 @@ import java.util.ArrayList;
 /**
  * Created by Таня on 18.08.2014.
  */
-public class WorkWithFiles extends Files {
+public class WorkWithXmlFiles extends Files {
 
-    private int convertFromStringToInteger(String value)
+    private static int convertFromStringToInteger(String value)
     {
         return Integer.parseInt(value);
     }
 
-    public void setFileName(String fileName)
-    {
-        this.fileName = fileName;
-    }
-
-    public ArrayList<Ingredient> readFromXMLFile()
+    @Override
+    public ArrayList<Ingredient> readFromFile()
     {
         ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
 
