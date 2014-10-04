@@ -10,8 +10,6 @@ public abstract class Files {
     public String fileName;
     public boolean fileExist;
     public abstract ArrayList readFromFile();
-    public void setFileName(String fileName)
-    {
-        this.fileName = fileName;
-    }
+    public abstract void setFileName(String fileName);
+
 }

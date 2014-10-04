@@ -11,13 +11,13 @@ public class Ingredient implements Comparable<Ingredient> {
     //Type of ingredient
     public String ingredientType;
     //The number of calories in 100g
-    public int calories;
+    public Integer calories;
     //The number of proteins in 100g
-    public int proteins;
+    public Integer proteins;
     //The number of fats in 100g
-    public int fats;
+    public Integer fats;
     //The number of carbohydrates in 100g
-    public int carbs;
+    public Integer carbs;
 
     // Метод повертає назву інгрідієнту
     public String getIngredientName()

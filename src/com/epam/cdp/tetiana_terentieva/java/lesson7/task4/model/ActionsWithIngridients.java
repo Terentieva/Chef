@@ -7,16 +7,21 @@ import java.util.*;
  */
 public class ActionsWithIngridients {
 
+    private ActionsWithIngridients(){}
+
     public static ArrayList fillListOfIngredients()
     {
         ArrayList<Ingredient> listOfIngredients = new ArrayList<Ingredient>();
-        WorkWithXmlFiles workWithXmlFiles = new WorkWithXmlFiles();
-        workWithXmlFiles.setFileName("./resources/ListOfIngredients.xml");
-        listOfIngredients.addAll(workWithXmlFiles.readFromFile());
+        Files[] workWithFiles = {new WorkWithXmlFiles(), new WorkWithJSONFiles()};
+        for(Files file: workWithFiles)
+        {
+            file.setFileName("./resources/ListOfIngredients");
+            listOfIngredients.addAll(file.readFromFile());
+        }
         return listOfIngredients;
     }
 
-    private static ArrayList<Ingredient> findIngredientsByParam(ArrayList listOfIngredients, int paramNumber, Object paramValue)
+    private static ArrayList<Ingredient> findIngredientsByParam(ArrayList listOfIngredients, int paramNumber, String paramValue)
     {
         Iterator<Ingredient> fvIt = listOfIngredients.iterator();
         ArrayList<Ingredient> newList = new ArrayList<Ingredient>();
@@ -33,19 +38,19 @@ public class ActionsWithIngridients {
                     break;
                 //calories
                 case 2:
-                    if (value.calories == paramValue) addNew = true;
+                    if (value.calories.toString().equals(paramValue)) addNew = true;
                     break;
                 //proteins
                 case 3:
-                    if (value.proteins == paramValue) addNew = true;
+                    if (value.proteins.toString().equals(paramValue)) addNew = true;
                     break;
                 //fats
                 case 4:
-                    if (value.fats == paramValue) addNew = true;
+                    if (value.fats.toString().equals(paramValue)) addNew = true;
                     break;
                 //carbohydrates
                 case 5:
-                    if (value.carbs == paramValue) addNew = true;
+                    if (value.carbs.toString().equals(paramValue)) addNew = true;
                     break;
                 // name
                 default:

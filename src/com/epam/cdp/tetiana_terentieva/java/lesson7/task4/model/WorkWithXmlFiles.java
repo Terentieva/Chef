@@ -75,4 +75,10 @@ public class WorkWithXmlFiles extends Files {
         return ingredients;
     }
 
+    @Override
+    public void setFileName(String fileName)
+    {
+        this.fileName = fileName + ".xml";
+    }
+
 }
